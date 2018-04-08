@@ -1,8 +1,8 @@
 {
     "name": "ThemeSwitch",
-    "displayName": "auto-theme-switch",
+    "displayName": "Auto Theme Switch",
     "description": "Changes theme periodically",
-    "version": "0.0.1",
+    "version": "0.0.2",
     "publisher": "chaymankala",
     "engines": {
         "vscode": "^1.22.0"
@@ -10,6 +10,7 @@
     "categories": [
         "Other"
     ],
+    "repository": "https://github.com/chaymankala/ThemeSwitch.git",
     "activationEvents": [
         "onCommand:ThemeSwitch.sayDude"
     ],
