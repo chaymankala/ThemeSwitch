@@ -1,0 +1,59 @@
+{
+    "name": "ThemeSwitch",
+    "displayName": "auto-theme-switch",
+    "description": "Changes theme periodically",
+    "version": "0.0.1",
+    "publisher": "chaymankala",
+    "engines": {
+        "vscode": "^1.22.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "activationEvents": [
+        "onCommand:ThemeSwitch.sayDude"
+    ],
+    "main": "./extension",
+    "contributes": {
+        "commands": [
+            {
+                "command": "ThemeSwitch.sayDude",
+                "title": "ThemeSwitch Start"
+            },
+            {
+                "command": "ThemeSwitch.stopDude",
+                "title": "ThemeSwitch Stop"
+            }
+        ],
+        "configuration": {
+            "type": "object",
+            "title": "Theme scheduler configuration",
+            "properties": {
+                "ThemeSwitch.interval": {
+                    "type": "string",
+                    "default": "600",
+                    "description": "Interval to change color theme in seconds"
+                },
+                "ThemeSwitch.themeList": {
+                    "type": "array",
+                    "default": [
+                        "Visual Studio Light",
+                        "Visual Studio Dark"
+                    ],
+                    "description": "List of themes to change periodically"
+                }
+            }
+        }
+    },
+    "scripts": {
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^2.6.1",
+        "vscode": "^1.1.6",
+        "eslint": "^4.11.0",
+        "@types/node": "^7.0.43",
+        "@types/mocha": "^2.2.42"
+    }
+}
