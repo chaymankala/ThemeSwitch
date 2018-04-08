@@ -3,7 +3,7 @@
 const vscode = require('vscode');
 var userSettings = vscode.workspace.getConfiguration();
 
-var _interval;
+var _interval = -1;
 
 // this method is called when your extension is activated
 // your extension is activated the very first time the command is executed
@@ -23,24 +23,26 @@ function activate(context) {
     let disposable = vscode.commands.registerCommand('ThemeSwitch.sayDude', function () {
         // The code you place here will be executed every time your command is executed
 
-        let themeList = extensionConfig.themeList;
-        if (!themeList.length) {
-            themeList = [
-                "Visual Studio Light",
-                "Visual Studio Dark"
-            ]
-        }
-        if (themeList.length) {
-            // Display a message box to the user
-            vscode.window.showInformationMessage('Started Switching!');
-            var i = 0;
+        if (_interval == -1) {
+            let themeList = extensionConfig.themeList;
+            if (!themeList.length) {
+                themeList = [
+                    "Visual Studio Light",
+                    "Visual Studio Dark"
+                ]
+            }
+            if (themeList.length) {
+                // Display a message box to the user
+                vscode.window.showInformationMessage('Started Switching!');
+                var i = 0;
 
-            let time_interval_pref = extensionConfig.interval ? parseInt(extensionConfig.interval) * 1000 : 600 * 1000;
+                let time_interval_pref = extensionConfig.interval ? parseInt(extensionConfig.interval) * 1000 : 600 * 1000;
 
-            _interval = setInterval(() => {
-                userSettings.update("workbench.colorTheme", themeList[i], true);
-                i = i == extensionConfig.themeList.length - 1 ? 0 : i + 1;
-            }, time_interval_pref);
+                _interval = setInterval(() => {
+                    userSettings.update("workbench.colorTheme", themeList[i], true);
+                    i = i == extensionConfig.themeList.length - 1 ? 0 : i + 1;
+                }, time_interval_pref);
+            }
         }
 
 
@@ -51,7 +53,8 @@ function activate(context) {
         // Display a message box to the user
         vscode.window.showInformationMessage('Stopped switching!');
         try {
-            clearInterval(_interval)
+            clearInterval(_interval);
+            _interval = -1;
         }
         catch (err) {
             console.log(err);
