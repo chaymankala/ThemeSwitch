@@ -1,7 +1,7 @@
 // The module 'vscode' contains the VS Code extensibility API
 // Import the module and reference it with the alias vscode in your code below
 const vscode = require('vscode');
-var userSettings = vscode.workspace.getConfiguration();
+
 
 var _interval = -1;
 
@@ -22,7 +22,7 @@ function activate(context) {
     // The commandId parameter must match the command field in package.json
     let disposable = vscode.commands.registerCommand('ThemeSwitch.sayDude', function () {
         // The code you place here will be executed every time your command is executed
-
+        var userSettings = vscode.workspace.getConfiguration();
         if (_interval == -1) {
             let themeList = extensionConfig.themeList;
             if (!themeList.length) {
