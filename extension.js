@@ -6,11 +6,11 @@ var _interval = -1;
 
 function activate(context) {
 
-    var extensionConfig = vscode.workspace.getConfiguration('ThemeSwitch');
-
     let disposable = vscode.commands.registerCommand('ThemeSwitch.sayDude', function () {
 
         var userSettings = vscode.workspace.getConfiguration();
+        var extensionConfig = vscode.workspace.getConfiguration('ThemeSwitch');
+
         if (_interval == -1) {
             let themeList = extensionConfig.themeList;
             if (!themeList.length) {
