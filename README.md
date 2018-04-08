@@ -33,4 +33,4 @@ This extension contributes the following settings:
 
 <img src="https://raw.githubusercontent.com/chaymankala/ThemeSwitch/master/ThemeSwitchRec.gif" style="margin-left:10px">
 
-**Made with <3 by Chaitanya Mankala**
+**Made with :heart: by Chaitanya Mankala**
